@@ -24,19 +24,23 @@ export class LoginComponent implements OnInit {
 	
 	login(){
 		let self = this;
-		self.webService.login(self.formGrp.value, function (data) {
-			var res = JSON.parse(data._body);
-			if (data.status == "200") {				
-				localStorage.setItem("accessToken", res.token);
-				self.toasterService.pop('success', 'Login', res.msg);
-				document.body.className="no-backgorund";
-					self.router.navigate(['/']);
 
-			} else {
-
-			}
-
-		});
+		if(self.formGrp.valid){
+			self.webService.login(self.formGrp.value, function (data) {
+				var res = JSON.parse(data._body);
+				if (data.status == "200") {				
+					localStorage.setItem("accessToken", res.token);
+					self.toasterService.pop('success', 'Login', res.msg);
+					document.body.className="no-backgorund";
+						self.router.navigate(['/']);
+	
+				} else {
+	
+				}
+	
+			});
+		}
+		
 	}
 	ngOnInit() {
 	}
