@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { AppRoutingModule } from "./routers/route";
 import { WebServiceService } from "app/services/web-service.service";
+import { ValidationService } from "app/services/validation.service";
+
 
 @NgModule({
   declarations: [
@@ -22,13 +24,14 @@ import { WebServiceService } from "app/services/web-service.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ToasterModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [WebServiceService],
+  providers: [WebServiceService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

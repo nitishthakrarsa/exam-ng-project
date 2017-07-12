@@ -20,7 +20,7 @@ export class WebServiceService {
 
 	login(user, callback) {
                
-        this.http.post(this.apiUrl + '/auth/login', user, { headers: this.headers }).subscribe(
+        this.http.post(this.apiUrl + 'auth/login', user, { headers: this.headers }).subscribe(
             data => {
                 console.log(data);
                 callback(data);
