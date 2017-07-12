@@ -1,3 +1,23 @@
-<p>
-  register works!
-</p>
+<div class="col-md-6 col-md-offset-3">
+	<h2>Register</h2>
+	<form [formGroup]="formGrp" name="form" (ngSubmit)="login()">
+		<div class="form-group" >
+			<label for="email">Email Address</label>
+			<input id="email" type="email" class="form-control" name="email" formControlName="email" />
+			<div *ngIf="formGrp.controls['email'].hasError('required') && formGrp.controls['email'].touched" class="alert alert-danger">Email address is required.</div>
+			<div *ngIf="!formGrp.controls['email'].valid && formGrp.controls['email'].touched" class="alert alert-danger">Email address is not valid.</div>
+		</div>
+		<div class="form-group" >
+			<label for="password">Password</label>
+			<input id="password" type="password" class="form-control" name="password" formControlName="password" required />
+			<div *ngIf="formGrp.controls['password'].hasError('required') && formGrp.controls['password'].touched" class="alert alert-danger">Password is required.</div>
+		</div>
+		<div class="form-group">
+			<button [disabled]="loading" class="btn btn-primary">Login</button>
+			<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+			/>
+			<a [routerLink]="['/register']" class="btn btn-link">Register</a>
+		</div>
+	</form>
+</div>
+<toaster-container></toaster-container>
